@@ -1,0 +1,6 @@
+.posts {
+  display: flex;
+  background-color: aqua;
+  width: 50px;
+  height: 20px;
+}
