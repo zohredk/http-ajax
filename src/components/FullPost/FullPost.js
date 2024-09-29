@@ -5,6 +5,8 @@ import "./FullPost.css";
 class FullPost extends React.Component {
   render() {
     let post = <p>Please select a Post</p>;
+
+    
     if (this.props.id) {
       post = (
         <div className="full-post">

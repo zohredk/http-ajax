@@ -1,6 +1,17 @@
 .posts {
   display: flex;
-  background-color: aqua;
-  width: 50px;
-  height: 20px;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 650px;
+  background-color: azure;
+  height: 400px;
+}
+
+.post {
+  width: 300px;
+  background-color: #c7fdff;
+  margin: auto;
+  text-align: center;
+  border: #000000 1px solid;
+  height: 150px;
 }

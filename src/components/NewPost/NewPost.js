@@ -26,9 +26,10 @@ class NewPost extends React.Component {
           onChange={(event) => this.setState({ content: event.target.value })}
         />
         <label>Author</label>
-        <select>
+        <select
           value={this.state.author}
           onChange={(event) => this.setState({ author: event.target.value })}
+        >
           <option value="Zohre">Zohre</option>
         </select>
         <button>Add Post</button>

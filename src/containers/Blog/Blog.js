@@ -10,7 +10,7 @@ import "./Blog.css";
 class Blog extends React.Component {
   state = {
     posts: [],
-    selectPostId: null,
+    selectedPostId: null,
   };
 
   componentDidMount() {
@@ -19,14 +19,14 @@ class Blog extends React.Component {
       const updatedPosts = posts.map((item) => {
         return {
           ...item,
-          author: "Masood",
+          author: "Zohre",
         };
       });
       this.setState({ posts: updatedPosts });
     });
   }
 
-  selectPostHandler = (id) => {
+  selectedPostHandler = (id) => {
     this.setState({ selectedPostId: id });
   };
 
@@ -37,7 +37,7 @@ class Blog extends React.Component {
           key={item.id}
           title={item.title}
           author={item.author}
-          click={() => this.selectPostHandler(item.id)}
+          click={() => this.selectedPostHandler(item.id)}
         />
       );
     });
@@ -47,7 +47,6 @@ class Blog extends React.Component {
         <section className="posts">{posts}</section>
         <section>
           <FullPost id={this.state.selectedPostId} />
-          <FullPost />
         </section>
         <section>
           <NewPost />
