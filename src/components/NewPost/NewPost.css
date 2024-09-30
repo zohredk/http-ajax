@@ -6,7 +6,11 @@ button {
   margin: auto;
   border: rgb(171, 171, 171) 1px solid;
 }
-
+button {
+  width: 80px;
+  background-color: transparent;
+  border: none;
+}
 .new-post {
   width: 650px;
   flex-direction: column;
@@ -15,4 +19,5 @@ button {
   display: flex;
   margin: auto;
   padding: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

@@ -3,7 +3,15 @@
   background-color: #045862b3;
   color: white;
   height: 150px;
-  padding: 25px;
-  width: 600px;
+  padding: 20px;
+  width: 650px;
   margin: auto;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.delete {
+  width: 80px;
+  color: #8e1212;
+  background-color: #ffffffe3;
+  border: 1px solid;
 }

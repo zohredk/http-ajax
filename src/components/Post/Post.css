@@ -5,6 +5,8 @@
   width: 650px;
   background-color: azure;
   height: 400px;
+  padding: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .post {
@@ -14,4 +16,8 @@
   text-align: center;
   border: #000000 1px solid;
   height: 150px;
+}
+
+.post:hover {
+  color: #206b6d;
 }
