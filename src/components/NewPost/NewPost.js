@@ -16,9 +16,11 @@ class NewPost extends React.Component {
       body: this.state.content,
       author: this.state.author,
     };
-    axios.post("/posts", data).then((response) => {
-      console.log(response);
-    });
+    axios
+      .post("https://jsonplaceholder.typicode.com/posts", data)
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   render() {
