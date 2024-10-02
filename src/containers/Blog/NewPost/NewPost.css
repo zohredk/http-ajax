@@ -12,7 +12,7 @@ button {
   border: none;
 }
 .new-post {
-  width: 650px;
+  width: 80%;
   flex-direction: column;
   background: aliceblue;
   text-align: center;
