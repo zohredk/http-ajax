@@ -1,61 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 import "./FullPost.css";
 
-class FullPost extends React.Component {
-  state = {
-    loadedPost: null,
-  };
+const FullPost = () => {
+  const { id } = useParams();
+  const [loadedPost, setLoadedPost] = useState(null);
 
-  componentDidMount() {
-    console.log(this.props);
-    if (this.props.match.params.id) {
-      if (
-        !this.state.loadedPost ||
-        (this.state.loadedPost &&
-          this.state.loadedPost.match.params.id !== this.props.match.params.id)
-      )
+  useEffect(() => {
+    if (id) {
+      if (!loadedPost || (loadedPost && loadedPost.id !== id)) {
         axios
-          .get(
-            `https://jsonplaceholder.typicode.com/posts/${this.props.match.params.id}`
-          )
+          .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
           .then((response) => {
-            this.setState({ loadedPost: response.data });
+            setLoadedPost(response.data);
           });
+      }
     }
-  }
+  }, [id, loadedPost]);
 
-  deletePostHandler = () => {
-    axios
-      .delete(
-        `https://jsonplaceholder.typicode.com/posts/${this.props.match.params.id}`
-      )
-      .then((response) => {
-        console.log(response);
-      });
+  const deletePostHandler = () => {
+    axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`).then((response) => {
+      console.log(response);
+    });
   };
 
-  render() {
-    let post = <p style={{ textAlign: "center" }}>Please select a Post</p>;
-    if (this.props.match.params.id) {
-      post = <p style={{ textAlign: "center" }}>Loading... </p>;
-    }
-    if (this.state.loadedPost) {
-      post = (
-        <div className="full-post">
-          <h2>{this.state.loadedPost.title}</h2>
-          <p>{this.state.loadedPost.body}</p>
-          <div>
-            <button onClick={this.deletePostHandler} className="delete">
-              Delete
-            </button>
-          </div>
-        </div>
-      );
-    }
-    return post;
+  let post = <p style={{ textAlign: "center" }}>Please select a Post</p>;
+  if (id) {
+    post = <p style={{ textAlign: "center" }}>Loading...</p>;
   }
-}
+  if (loadedPost) {
+    post = (
+      <div className="full-post">
+        <h2>{loadedPost.title}</h2>
+        <p>{loadedPost.body}</p>
+        <div>
+          <button onClick={deletePostHandler} className="delete">
+            Delete
+          </button>
+        </div>
+      </div>
+    );
+  }
+  return post;
+};
 
 export default FullPost;

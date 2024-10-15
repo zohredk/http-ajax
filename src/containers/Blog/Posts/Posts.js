@@ -1,9 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../../../axios";
-
 import Post from "../../../components/Post/Post";
-
 import "./Posts.css";
 
 class Posts extends React.Component {
@@ -13,8 +11,6 @@ class Posts extends React.Component {
 
   componentDidMount() {
     console.log(this.props);
-    console.log(this.props.match);
-
     axios
       .get("/posts")
       .then((response) => {
@@ -33,11 +29,11 @@ class Posts extends React.Component {
   }
 
   selectedPostHandler = (id) => {
-    this.setState({ selectedPostId: id });
+    this.props.navigate(`/${id}`);
   };
 
   render() {
-    let posts = <p style={{ textAlign: "center" }}> Fetching data failed!</p>;
+    let posts = <p style={{ textAlign: "center" }}>Fetching data failed!</p>;
     if (!this.state.error) {
       posts = this.state.posts.map((item) => {
         return (
@@ -51,9 +47,13 @@ class Posts extends React.Component {
         );
       });
     }
-
     return <section className="posts">{posts}</section>;
   }
 }
 
-export default Posts;
+const PostsWithNavigate = (props) => {
+  const navigate = useNavigate();
+  return <Posts {...props} navigate={navigate} />;
+};
+
+export default PostsWithNavigate;

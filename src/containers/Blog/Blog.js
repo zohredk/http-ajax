@@ -3,7 +3,6 @@ import { Routes, Route, Link } from "react-router-dom";
 import Posts from "./Posts/Posts";
 import NewPost from "./NewPost/NewPost";
 import FullPost from "./FullPost/FullPost";
-
 import "./Blog.css";
 
 class Blog extends React.Component {
@@ -30,9 +29,13 @@ class Blog extends React.Component {
           </nav>
         </header>
         <Routes>
-          <Route path="/" exact Component={Posts} />
-          <Route path="/new-post" Component={NewPost} />
-          <Route path="/:id" exact Component={FullPost} />
+          <Route path="/" exact element={<Posts />} />
+          <Route path="/new-post" element={<NewPost />} />
+          <Route path="/:id" element={<FullPost />} />
+          <Route
+            path="*"
+            element={<h2 style={{ textAlign: "center" }}>Not Found</h2>}
+          />
         </Routes>
       </div>
     );
